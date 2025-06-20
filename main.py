@@ -5,7 +5,7 @@ st.set_page_config(page_title="Stock Story", page_icon="📈")
 st.title("📘 AI Stock Story Summarizer")
 
 # Securely load your OpenAI key from secrets
-openai.api_key = st.secrets["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"]
+openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 ticker = st.text_input("Enter a stock ticker (e.g. AAPL):")
 
