@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Draven Biotech Event Case",
+  "type": "object",
+  "required": ["case_id", "security", "cutoff", "catalysts", "evidence", "assumptions", "scenarios", "falsifiers"],
+  "properties": {
+    "case_id": {"type": "string"},
+    "security": {
+      "type": "object",
+      "required": ["ticker", "company", "price", "basic_shares_m"],
+      "properties": {
+        "ticker": {"type": "string"},
+        "company": {"type": "string"},
+        "price": {"type": "number", "exclusiveMinimum": 0},
+        "basic_shares_m": {"type": "number", "exclusiveMinimum": 0}
+      }
+    },
+    "cutoff": {"type": "string", "format": "date-time"},
+    "catalysts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "timing", "status", "source_ids"],
+        "properties": {
+          "name": {"type": "string"},
+          "timing": {"type": "string"},
+          "status": {"enum": ["dated", "window", "undated", "resolved"]},
+          "source_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "claim", "source", "source_tier", "confidence", "as_of"],
+        "properties": {
+          "id": {"type": "string"},
+          "claim": {"type": "string"},
+          "source": {"type": "string"},
+          "source_tier": {"enum": ["primary", "secondary", "market_data", "model"]},
+          "confidence": {"enum": ["high", "medium", "low"]},
+          "as_of": {"type": "string", "format": "date"}
+        }
+      }
+    },
+    "assumptions": {"type": "object"},
+    "scenarios": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["name", "probability", "terminal_price", "drivers"],
+        "properties": {
+          "name": {"type": "string"},
+          "probability": {"type": "number", "minimum": 0, "maximum": 1},
+          "terminal_price": {"type": "number", "minimum": 0},
+          "drivers": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+        }
+      }
+    },
+    "falsifiers": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "instrument_gate": {
+      "type": "object",
+      "properties": {
+        "preferred": {"type": "string"},
+        "rejected": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}

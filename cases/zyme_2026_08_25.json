@@ -1,0 +1,160 @@
+{
+  "case_id": "DC-ER-2026-08-ZYME-01",
+  "title": "High-Probability Regulatory Conversion, Mispriced Second Catalyst",
+  "investment_conclusion": "Own ZYME common equity through the August 25, 2026 PDUFA and the subsequent doublet overall-survival analysis, subject to the financial-review and label-quality gates. Do not buy pre-PDUFA options because listed expiries do not isolate the FDA event and quoted structures fail liquidity, breakeven, and event-coverage tests.",
+  "security": {
+    "ticker": "ZYME",
+    "company": "Zymeworks Inc.",
+    "price": 23.66,
+    "basic_shares_m": 73.023061
+  },
+  "cutoff": "2026-08-06T10:13:00-04:00",
+  "catalysts": [
+    {
+      "name": "FDA action on first-line HER2-positive GEA sBLA",
+      "timing": "2026-08-25",
+      "status": "dated",
+      "source_ids": ["E1", "E2"]
+    },
+    {
+      "name": "Second interim OS analysis for zanidatamab plus chemotherapy",
+      "timing": "Q3 2026, undated",
+      "status": "window",
+      "source_ids": ["E3", "E4"]
+    },
+    {
+      "name": "Theravance transaction closing",
+      "timing": "2H 2026",
+      "status": "window",
+      "source_ids": ["E7"]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E1",
+      "claim": "The FDA assigned an August 25, 2026 PDUFA date and Priority Review to the first-line GEA sBLA.",
+      "source": "Jazz Pharmaceuticals official release",
+      "source_tier": "primary",
+      "confidence": "high",
+      "as_of": "2026-08-06"
+    },
+    {
+      "id": "E2",
+      "claim": "Zanidatamab is already FDA approved in previously treated HER2-positive biliary tract cancer, reducing but not eliminating incremental molecule and manufacturing risk.",
+      "source": "FDA label and sponsor disclosures",
+      "source_tier": "primary",
+      "confidence": "high",
+      "as_of": "2026-08-06"
+    },
+    {
+      "id": "E3",
+      "claim": "Both zanidatamab-containing arms achieved median PFS of 12.4 months versus 8.1 months for trastuzumab plus chemotherapy, with hazard ratios of 0.63 and 0.65.",
+      "source": "HERIZON-GEA-01 peer-reviewed publication",
+      "source_tier": "primary",
+      "confidence": "high",
+      "as_of": "2026-05-27"
+    },
+    {
+      "id": "E4",
+      "claim": "The triplet achieved statistically significant OS with HR 0.72, while the doublet had HR 0.80 and did not cross at the first interim analysis.",
+      "source": "HERIZON-GEA-01 peer-reviewed publication and supplement",
+      "source_tier": "primary",
+      "confidence": "high",
+      "as_of": "2026-05-27"
+    },
+    {
+      "id": "E5",
+      "claim": "Qualifying U.S. approval triggers a $250 million milestone payable by Jazz to Zymeworks.",
+      "source": "Zymeworks SEC filing",
+      "source_tier": "primary",
+      "confidence": "high",
+      "as_of": "2026-08-06"
+    },
+    {
+      "id": "E6",
+      "claim": "FactSet reported approximately 73.0 million basic shares, $23.66 reference price, 5.8% short interest, and 7.6 days to cover.",
+      "source": "FactSet company and ownership snapshots",
+      "source_tier": "market_data",
+      "confidence": "high",
+      "as_of": "2026-08-06"
+    },
+    {
+      "id": "E7",
+      "claim": "The Theravance acquisition uses acquired cash and non-recourse financing in addition to Zymeworks cash; antitrust clearance was reported in August 2026.",
+      "source": "Transaction filings and FactSet event report",
+      "source_tier": "primary",
+      "confidence": "medium",
+      "as_of": "2026-08-06"
+    },
+    {
+      "id": "E8",
+      "claim": "The listed option chain had no expiry directly bracketing the PDUFA and displayed spreads too wide for a defensible pre-event options trade.",
+      "source": "User-supplied synchronized option-chain snapshot",
+      "source_tier": "market_data",
+      "confidence": "medium",
+      "as_of": "2026-08-06"
+    }
+  ],
+  "assumptions": {
+    "approval_probability": 0.93,
+    "broad_approval_probability": 0.75,
+    "doublet_os_cross_probability": 0.37,
+    "approval_milestone_m": 250.0,
+    "position_initial_nav": 0.04,
+    "position_target_nav": 0.08,
+    "position_max_nav": 0.10,
+    "valuation_bridge": {
+      "method": "event-window sum of cash and milestone conversion, probability-adjusted royalty value, Theravance value, pipeline residual, less debt and obligations",
+      "warning": "Terminal values are model judgments and must be refreshed with the latest filing, label, royalty terms, and market price."
+    }
+  },
+  "scenarios": [
+    {
+      "name": "Broad approval and doublet OS crosses",
+      "probability": 0.30,
+      "terminal_price": 31.50,
+      "drivers": ["clean label", "milestone received", "doublet establishes stronger standalone regimen"]
+    },
+    {
+      "name": "Broad approval and doublet OS does not cross",
+      "probability": 0.45,
+      "terminal_price": 26.00,
+      "drivers": ["approval and milestone", "triplet remains strongest survival package", "limited incremental doublet rerating"]
+    },
+    {
+      "name": "Narrower approval and doublet OS crosses",
+      "probability": 0.07,
+      "terminal_price": 28.50,
+      "drivers": ["initial label constraint", "subsequent survival result improves commercial narrative"]
+    },
+    {
+      "name": "Narrower approval and doublet OS does not cross",
+      "probability": 0.11,
+      "terminal_price": 24.25,
+      "drivers": ["milestone conversion", "commercial positioning remains qualified", "crowded-event selling"]
+    },
+    {
+      "name": "Delay, CRL, or material regulatory deficiency",
+      "probability": 0.07,
+      "terminal_price": 20.00,
+      "drivers": ["milestone delayed", "regulatory uncertainty reopens", "asset and Theravance floor limit but do not prevent downside"]
+    }
+  ],
+  "falsifiers": [
+    "The August 6 filing shows materially weaker unrestricted liquidity or materially greater Zymeworks cash funding for Theravance than underwritten.",
+    "Approval does not trigger the expected $250 million milestone or proceeds are materially restricted.",
+    "The FDA label materially excludes the commercially relevant first-line population or provides unexpectedly adverse safety language.",
+    "The updated doublet OS hazard ratio deteriorates materially rather than stabilizing or improving.",
+    "Broad approval produces no positive stock response over two full sessions, indicating severe crowding or a valuation error.",
+    "The stock trades above the modeled broad-approval value before the event without new fundamental information."
+  ],
+  "instrument_gate": {
+    "preferred": "Common equity held through both catalysts, with staged sizing and explicit post-event exits.",
+    "rejected": [
+      "August options because they expire before the official PDUFA date.",
+      "September naked calls because breakevens require a larger move than the central fundamental distribution and timing may miss the OS readout.",
+      "Pre-PDUFA verticals because quoted spreads and debits fail execution gates.",
+      "Short-premium structures because regulatory gap risk is not bounded."
+    ]
+  }
+}
